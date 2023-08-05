@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
 const createRoute = require("./routes/createRoutes");
+const likeRoute = require("./routes/likeRoute");
+const commentRoute = require("./routes/commentRoute")
 const dbConnect = require("./config/dataBase");
+
+
 
 require("dotenv").config();
 
@@ -12,6 +16,8 @@ app.listen(process.env.PORT,()=>{
 })
 
 app.use("/posts",createRoute);
+app.use("/likes",likeRoute);
+app.use("/comments",commentRoute);
 
 dbConnect();
 
